@@ -38,6 +38,7 @@ Invoke-WebRequest -URI "https://github.com/PowerShell/PowerShell/releases/downlo
 msiexec.exe /package $temp\PowerShell-7.0.1-win-x64.msi /quiet ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1 ENABLE_PSREMOTING=1 REGISTER_MANIFEST=1
 ```
 
+
 6. Install modules and set up the profile files for Powershell 7 (execute from pwsh.exe - Powershell 7):
 ```powershell
 C:\Program Files\PowerShell\7\pwsh.exe -Command If(-not(Get-InstalledModule posh-git -ErrorAction silentlycontinue)){;
@@ -64,17 +65,20 @@ if (!(Test-Path -Path $PROFILE)) {;
 
 ```
 
+
 7. Download the settings.json file:
 ```powershell
 invoke-webrequest -URI "https://raw.githubusercontent.com/Dviros/Ultimate-Windows-Terminal/master/settings.json" -Out-file $env:USERPROFILE\AppData\Local\Packages\Microsoft.WindowsTerminal_*\LocalState\settings.json -Force
 ```
 *** Manually edit (sorry) line 63: "startingDirectory": "//wsl$/Ubuntu-20.04/home/<username>" in Ubuntu and type your username.
 
+
 8. Install Powerline on Ubuntu:
 ```bash
 sudo apt install golang-go
 go get -u github.com/justjanne/powerline-go
 ```
+
 
 9. Add the following to your ~/.bashrc file. Make sure to check if GOPATH is already declared:
 ```bash
@@ -87,26 +91,32 @@ if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then
 fi
 ```
 
+
 10. Launch and enjoy:
 ```powershell
 wt ; split-pane -p "Ubuntu-20.04 🐳" -d "//wsl$/Ubuntu-20.04/home/<username>"; split-pane -p "cmd"
 ```
 
+
 11. Bonus Level
 You can also add specific SSH commands and profiles to your settings.json file.
+
+
 For example, for passwordless sign-ins, you can use Public-Key authentication with the following:
 ```json
-		{
-			"name": "SSH Connection 💻",
-			"commandline": "ssh -i c:\\link\\to\\your\\key.pub username@IP",
-			"icon": "C:\\cool\\icon.png",
-			"acrylicOpacity" : 0.7,
-            "colorScheme" : "Campbell",
-            "cursorColor" : "#FFFFFD",
-            "fontFace" : "Cascadia Code PL",
-            "useAcrylic" : true
-		}
+	{
+	"name": "SSH Connection 💻",
+	"commandline": "ssh -i c:\\link\\to\\your\\key.pub username@IP",
+	"icon": "C:\\cool\\icon.png",
+	"acrylicOpacity" : 0.7,
+        "colorScheme" : "Campbell",
+	"cursorColor" : "#FFFFFD",
+	"fontFace" : "Cascadia Code PL",
+	"useAcrylic" : true
+	}
 ```
+
+And then to run:
 ```powershell
 wt ; split-pane -p "SSH Connection"
 ```
