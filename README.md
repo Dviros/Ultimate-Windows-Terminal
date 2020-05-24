@@ -70,7 +70,7 @@ if (!(Test-Path -Path $PROFILE)) {;
 ```powershell
 invoke-webrequest -URI "https://raw.githubusercontent.com/Dviros/Ultimate-Windows-Terminal/master/settings.json" -Out-file $env:USERPROFILE\AppData\Local\Packages\Microsoft.WindowsTerminal_*\LocalState\settings.json -Force
 ```
-*** Manually edit (sorry) line 63: "startingDirectory": "//wsl$/Ubuntu-20.04/home/<username>" in Ubuntu and type your username.
+*** Manually edit (sorry) line 63: "startingDirectory": "//wsl$/Ubuntu-20.04/home/<username>" in Ubuntu and type your  UBUNTU username (you'll need to run it first and set it up).
 
 
 8. Install Powerline on Ubuntu:
@@ -98,7 +98,8 @@ wt ; split-pane -p "Ubuntu-20.04 🐳" -d "//wsl$/Ubuntu-20.04/home/<username>";
 ```
 
 
-11. Bonus Level
+11. Bonus Level!
+
 You can also add specific SSH commands and profiles to your settings.json file.
 
 
