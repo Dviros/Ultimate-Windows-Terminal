@@ -107,7 +107,7 @@ For example, for passwordless sign-ins, you can use Public-Key authentication wi
 ```json
 	{
 	"name": "SSH Connection 💻",
-	"commandline": "ssh -i c:\\link\\to\\your\\key.pub username@IP",
+	"commandline": "ssh -i c:\\link\\to\\your\\private\\key username@IP",
 	"icon": "C:\\cool\\icon.png",
 	"acrylicOpacity" : 0.7,
         "colorScheme" : "Campbell",
