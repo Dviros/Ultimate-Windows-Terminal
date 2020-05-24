@@ -46,6 +46,9 @@ If(-not(Get-InstalledModule oh-my-posh -ErrorAction silentlycontinue)){;
 If(-not(Get-InstalledModule Paradox -ErrorAction silentlycontinue)){;
     Install-Module Paradox -Confirm:$False -Force;
 };
+If(-not(Get-InstalledModule PSReadLine -ErrorAction silentlycontinue)){;
+    Install-Module -Name PSReadLine -AllowPrerelease -Force -SkipPublisherCheck;
+};
 
 $filename = "Microsoft.PowerShell_profile.ps1";
 if (!(Test-Path -Path $PROFILE)) {;
@@ -54,14 +57,33 @@ if (!(Test-Path -Path $PROFILE)) {;
   Out-file -Filepath $PROFILE\$filename "Import-Module oh-my-posh" -Append;
   Out-file -Filepath $PROFILE\$filename "Set-Theme Paradox" -Append;
 };
+
 ```
 
 7. Download the settings.json file:
 ```powershell
 invoke-webrequest -URI "https://raw.githubusercontent.com/Dviros/Ultimate-Windows-Terminal/master/settings.json" -Out-file $env:USERPROFILE\AppData\Local\Packages\Microsoft.WindowsTerminal_*\LocalState\settings.json -Force
 ```
+*** Manually edit (sorry) ""startingDirectory": "//wsl$/Ubuntu-20.04/home/<username>"" in Ubuntu to your username.
 
-8. Launch and enjoy:
+8. Install Powerline on Ubuntu:
+```bash
+sudo apt install golang-go
+go get -u github.com/justjanne/powerline-go
+```
+
+9. Add the following to your ~/.bashrc file. Make sure to check if GOPATH is already declared:
+```bash
+GOPATH=$HOME/go
+function _update_ps1() {
+    PS1="$($GOPATH/bin/powerline-go -error $?)"
+}
+if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+```
+
+10. Launch and enjoy:
 ```powershell
 wt ; split-pane -p "Ubuntu-20.04 🐳" -d "//wsl$/Ubuntu-20.04/home/<username>"; split-pane -p "cmd"
 ```
