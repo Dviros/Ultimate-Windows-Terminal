@@ -13,7 +13,8 @@ My settings.json file contains couple of color schemes, key bindings, supports U
 1. Enable Windows Subsystem and restart your machine:
 ```powershell
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-'''
+```
+
 2. Install Ubuntu from the Microsoft Store:
 https://www.microsoft.com/en-us/p/ubuntu-2004-lts/9n6svws3rx71
 
@@ -28,7 +29,7 @@ https://github.com/microsoft/cascadia-code/releases/download/v2005.15/CascadiaCo
 ```powershell
 Invoke-WebRequest -URI "https://github.com/PowerShell/PowerShell/releases/download/v7.0.1/PowerShell-7.0.1-win-x64.msi" -outfile $temp\PowerShell-7.0.1-win-x64.msi
 msiexec.exe /package $temp\PowerShell-7.0.1-win-x64.msi /quiet ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1 ENABLE_PSREMOTING=1 REGISTER_MANIFEST=1
-'''
+```
 
 6. Install modules and set up the profile files for Powershell 7 (execute from pwsh.exe - Powershell 7):
 ```powershell
@@ -50,17 +51,17 @@ if (!(Test-Path -Path $PROFILE)) {;
   Out-file -Filepath $PROFILE\$filename "Import-Module oh-my-posh" -Append;
   Out-file -Filepath $PROFILE\$filename "Set-Theme Paradox" -Append;
 };
-'''
+```
 
 7. Download the settings.json file:
-'''powershell
+```powershell
 invoke-webrequest -URI "https://raw.githubusercontent.com/Dviros/Ultimate-Windows-Terminal/master/settings.json" -Out-file $env:USERPROFILE\AppData\Local\Packages\Microsoft.WindowsTerminal_*\LocalState\settings.json -Force
-'''
+```
 
 8. Launch and enjoy:
-'''powershell
+```powershell
 wt ; split-pane -p "Ubuntu-20.04 🐳" -d "//wsl$/Ubuntu-20.04/home/<username>"; split-pane -p "cmd"
-'''
+```
 
 
 ## Sources and Documentations
