@@ -19,14 +19,18 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
 ```
 
 2. Install Ubuntu from the Microsoft Store:
+
 https://www.microsoft.com/en-us/p/ubuntu-2004-lts/9n6svws3rx71
 
 3. Install Windows Terminal from the Microsoft Store:
+
 https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701
 
 4. Install Cascadia Code Fonts from:
+
 https://github.com/microsoft/cascadia-code/ -> latest version:
 https://github.com/microsoft/cascadia-code/releases/download/v2005.15/CascadiaCode_2005.15.zip
+
 
 5. Install Powershell 7:
 ```powershell
@@ -64,7 +68,7 @@ if (!(Test-Path -Path $PROFILE)) {;
 ```powershell
 invoke-webrequest -URI "https://raw.githubusercontent.com/Dviros/Ultimate-Windows-Terminal/master/settings.json" -Out-file $env:USERPROFILE\AppData\Local\Packages\Microsoft.WindowsTerminal_*\LocalState\settings.json -Force
 ```
-*** Manually edit (sorry) ""startingDirectory": "//wsl$/Ubuntu-20.04/home/<username>"" in Ubuntu to your username.
+*** Manually edit (sorry) line 63: "startingDirectory": "//wsl$/Ubuntu-20.04/home/<username>" in Ubuntu and type your username.
 
 8. Install Powerline on Ubuntu:
 ```bash
@@ -88,10 +92,39 @@ fi
 wt ; split-pane -p "Ubuntu-20.04 🐳" -d "//wsl$/Ubuntu-20.04/home/<username>"; split-pane -p "cmd"
 ```
 
+11. Bonus Level
+You can also add specific SSH commands and profiles to your settings.json file.
+For example, for passwordless sign-ins, you can use Public-Key authentication with the following:
+```json
+		{
+			"name": "SSH Connection 💻",
+			"commandline": "ssh -i c:\\link\\to\\your\\key.pub username@IP",
+			"icon": "C:\\cool\\icon.png",
+			"acrylicOpacity" : 0.7,
+            "colorScheme" : "Campbell",
+            "cursorColor" : "#FFFFFD",
+            "fontFace" : "Cascadia Code PL",
+            "useAcrylic" : true
+		}
+```
+```powershell
+wt ; split-pane -p "SSH Connection"
+```
+Or
+```powershell
+wt ; new-tab -p "SSH Connection"
+```
 
 ## Sources and Documentations
+
+I highly recommend on reading Microsoft's documentations:
+
 https://docs.microsoft.com/en-us/windows/terminal/
+
+
+Sources:
 https://github.com/PowerShell/PowerShell/
 https://github.com/microsoft/cascadia-code/
+https://github.com/justjanne/powerline-go
 https://www.hanselman.com/blog/HowToMakeAPrettyPromptInWindowsTerminalWithPowerlineNerdFontsCascadiaCodeWSLAndOhmyposh.aspx
 https://www.thomasmaurer.ch/2020/04/my-customized-windows-terminal-settings-json/
