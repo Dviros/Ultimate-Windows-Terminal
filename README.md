@@ -4,8 +4,11 @@
 
 ## What's the Story?
 I always loved clean and sleek terminals.
+
 When Microsoft started working on Terminal last year, I got really excited that finally, Windows will have it's own unique and dynamic terminal, like Linux and macOS.
+
 So I took Microsoft's documentations and couple of other great examples, and wanted to share my version of it.
+
 My settings.json file contains couple of color schemes, key bindings, supports Ubuntu 20.04 and Powershell 7.
 
 
