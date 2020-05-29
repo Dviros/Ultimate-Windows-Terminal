@@ -61,7 +61,7 @@ Out-file -Filepath $PROFILE\$filename "Set-Theme Paradox" -Append;
 
 7. Download the settings.json file:
 ```powershell
-invoke-webrequest -URI "https://raw.githubusercontent.com/Dviros/Ultimate-Windows-Terminal/master/settings.json" -Out-file $env:USERPROFILE\AppData\Local\Packages\Microsoft.WindowsTerminal_*\LocalState\settings.json -Force
+invoke-webrequest -URI "https://raw.githubusercontent.com/Dviros/Ultimate-Windows-Terminal/master/settings.json" -Outfile $env:USERPROFILE\AppData\Local\Packages\Microsoft.WindowsTerminal_*\LocalState\settings.json
 ```
 *** Manually edit (sorry) line 63: "startingDirectory": "//wsl$/Ubuntu-20.04/home/<username>" in Ubuntu and type your  UBUNTU username (you'll need to run it first and set it up).
 
