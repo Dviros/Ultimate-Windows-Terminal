@@ -48,20 +48,13 @@ If(-not(Get-InstalledModule oh-my-posh -ErrorAction silentlycontinue)){;
     Install-Module oh-my-posh -Confirm:$False -Force;
 };
 
-If(-not(Get-InstalledModule Paradox -ErrorAction silentlycontinue)){;
-    Install-Module Paradox -Confirm:$False -Force;
-};
 If(-not(Get-InstalledModule PSReadLine -ErrorAction silentlycontinue)){;
     Install-Module -Name PSReadLine -AllowPrerelease -Force -SkipPublisherCheck;
 };
 
-$filename = "Microsoft.PowerShell_profile.ps1";
-if (!(Test-Path -Path $PROFILE)) {;
-  New-Item -ItemType File -Name $filename -Path $PROFILE -Force;
-  Out-file -Filepath $PROFILE\$filename "Import-Module posh-git" -Append;
-  Out-file -Filepath $PROFILE\$filename "Import-Module oh-my-posh" -Append;
-  Out-file -Filepath $PROFILE\$filename "Set-Theme Paradox" -Append;
-};
+Out-file -Filepath $PROFILE\$filename "Import-Module posh-git" -Append;
+Out-file -Filepath $PROFILE\$filename "Import-Module oh-my-posh" -Append;
+Out-file -Filepath $PROFILE\$filename "Set-Theme Paradox" -Append;
 
 ```
 
