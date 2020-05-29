@@ -34,8 +34,8 @@ https://github.com/microsoft/cascadia-code/releases/download/v2005.15/CascadiaCo
 
 5. Install Powershell 7:
 ```powershell
-Invoke-WebRequest -URI "https://github.com/PowerShell/PowerShell/releases/download/v7.0.1/PowerShell-7.0.1-win-x64.msi" -outfile $temp\PowerShell-7.0.1-win-x64.msi
-msiexec.exe /package $temp\PowerShell-7.0.1-win-x64.msi /quiet ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1 ENABLE_PSREMOTING=1 REGISTER_MANIFEST=1
+Invoke-WebRequest -URI "https://github.com/PowerShell/PowerShell/releases/download/v7.0.1/PowerShell-7.0.1-win-x64.msi" -outfile $ENV:temp\PowerShell-7.0.1-win-x64.msi
+msiexec.exe /package $ENV:temp\PowerShell-7.0.1-win-x64.msi /quiet ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1 ENABLE_PSREMOTING=1 REGISTER_MANIFEST=1
 ```
 
 
@@ -119,11 +119,11 @@ For example, for passwordless sign-ins, you can use Public-Key authentication wi
 
 And then to run:
 ```powershell
-wt ; split-pane -p "SSH Connection"
+wt ; split-pane -p "SSH Connection 💻"
 ```
 Or
 ```powershell
-wt ; new-tab -p "SSH Connection"
+wt ; new-tab -p "SSH Connection 💻"
 ```
 
 ## Sources and Documentations
