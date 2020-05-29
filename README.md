@@ -52,9 +52,9 @@ If(-not(Get-InstalledModule PSReadLine -ErrorAction silentlycontinue)){;
     Install-Module -Name PSReadLine -AllowPrerelease -Force -SkipPublisherCheck;
 };
 
-Out-file -Filepath $PROFILE\$filename "Import-Module posh-git" -Append;
-Out-file -Filepath $PROFILE\$filename "Import-Module oh-my-posh" -Append;
-Out-file -Filepath $PROFILE\$filename "Set-Theme Paradox" -Append;
+Out-file -Filepath $PROFILE "Import-Module posh-git" -Append;
+Out-file -Filepath $PROFILE "Import-Module oh-my-posh" -Append;
+Out-file -Filepath $PROFILE "Set-Theme Paradox" -Append;
 
 ```
 
